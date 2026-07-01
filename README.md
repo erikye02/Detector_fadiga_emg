@@ -1,8 +1,9 @@
 # Detector de fadiga muscular — registro do projeto
 
-Registro de um projeto exploratório: montar um detector de fadiga muscular caseiro,
-com um ESP32 e um sensor AD8232, lendo o sinal elétrico do músculo pela pele. Não é
-trabalho acadêmico nem produto; é um grupo aprendendo eletrônica, microcontrolador e
+Registro de um projeto da disciplina CFA (Computação Física e Aplicações): montar um
+detector de fadiga muscular caseiro, com um ESP32 e um sensor AD8232, lendo o sinal
+elétrico do músculo pela pele. É um trabalho de disciplina de caráter exploratório —
+não um TCC nem um produto —, com um grupo aprendendo eletrônica, microcontrolador e
 processamento de sinais na prática, errando e corrigindo pelo caminho.
 
 São três textos, e podem ser lidos em qualquer ordem:
