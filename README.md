@@ -2,9 +2,7 @@
 
 Registro de um projeto da disciplina CFA (Computação Física e Aplicações): montar um
 detector de fadiga muscular caseiro, com um ESP32 e um sensor AD8232, lendo o sinal
-elétrico do músculo pela pele. É um trabalho de disciplina de caráter exploratório —
-não um TCC nem um produto —, com um grupo aprendendo eletrônica, microcontrolador e
-processamento de sinais na prática, errando e corrigindo pelo caminho.
+elétrico do músculo pela pele. É um trabalho de disciplina de caráter exploratório.
 
 São três textos, e podem ser lidos em qualquer ordem:
 
