@@ -2,8 +2,9 @@ DEPURAÇÃO DO SENSOR — A TRAVA EM 4095
 ========================================
 
 Esta foi a parte que mais consumiu tempo e mais nos ensinou. Começou como "o sensor
-parou de funcionar" e virou uma caça ao defeito de hardware que durou semanas, sem
-multímetro. Registramos como aconteceu, com os erros de diagnóstico no meio.
+parou de funcionar" e virou uma caça ao defeito de hardware que durou semanas, boa
+parte dela sem multímetro. Registramos como aconteceu, com os erros de diagnóstico
+no meio.
 
 
 A MONTAGEM E O PROBLEMA
@@ -73,16 +74,6 @@ indicador correto) e imprime "conectado" ou "solto" por eletrodo, junto da saíd
     combinava mais com erro de montagem/conexão do que com componente queimado
 
 
-FOTOS E ALIMENTAÇÃO DESCARTADA
-----------------------------------------
-
-  - As fotos mostraram hardware íntegro, mas não permitiram rastrear os cinco
-    jumpers um a um (fios em laços, contatos escondidos)
-  - O pino "3V" do ESP32 é o 3.3V regulado (lugar certo); o shutdown estava solto
-    (chip não desligado)
-  - A alimentação influencia o ruído, mas não explica trava no teto: ruído faz o
-    número oscilar, não grudar no máximo. Trava em 4095 = entrada aberta
-
 
 O TESTE DO CURTO
 ----------------------------------------
@@ -100,24 +91,26 @@ eletrodo, a pele, a água e a ordem dos fios.
     atravessa junta meio aberta e não comprova continuidade real
 
 
-O QUE FALTA
+O DESFECHO
 ----------------------------------------
 
-  - Um último teste separa o jack do chip, sem ferro de solda nem multímetro
-  - A placa tem três furos no topo (RA, LA, RL) em paralelo com o jack
-  - Curtá-los direto na placa, com o cabo desconectado:
-      · Saída sai do teto → chip vivo, problema é o jack
-      · Continua travada → entrada do chip perdida
+O que fechou o caso foi finalmente ter um multímetro em mãos. Medindo continuidade
+e tensão ponto a ponto, praticamente todos os problemas se explicaram de uma vez: um
+dos jumpers que levava energia ao módulo AD8232 não estava fazendo contato. O chip
+nunca tinha sido alimentado de fato.
 
+  - Trocamos o jumper por um firme e a saída saiu do teto na hora
+  - OUT passou a oscilar por volta de 1500 a 3168, no meio da escala — sinal EMG de
+    verdade, sem grudar em 4095
+  - Amarelo e vermelho marcaram conectado, e o lead-off finalmente fez sentido (só
+    fecha com o chip alimentado)
 
-LIÇÕES
-----------------------------------------
-
-  - Não confiar num teste antes de entender o que ele realmente mede
-  - Desconfiar de sinal que aparece só por aproximação do dedo
-  - Isolar o problema pela metade em vez de trocar peças no escuro
-  - "Problema de hardware" quase nunca é chip queimado — quase sempre é algo físico,
-    solto ou no lugar errado
+Isso explica a saga inteira de trás para frente: a trava em 4095 era o par de
+entradas parado no trilho, sem o amplificador de instrumentação para trabalhar; o
+lead-off vinha sem sentido; a água salgada não variava. A intuição de que era erro
+de montagem, e não componente queimado, estava certa o tempo todo. A alimentação
+tinha sido "descartada" mais de uma vez conferindo só o pino certo (3.3V no lugar),
+sem nunca medir se o jumper realmente encostava — foi o multímetro que expôs isso.
 
 Códigos usados: codigos/util_varredura_adc, codigos/util_teste_eletrodos,
 codigos/util_diagnostico. Referências completas em referencia.md.
