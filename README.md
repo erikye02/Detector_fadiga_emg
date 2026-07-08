@@ -14,5 +14,8 @@ São três textos, e podem ser lidos em qualquer ordem:
 - [depuracao.md](depuracao.md) — a investigação do sensor que travava em 4095, com
   os becos sem saída e os erros de diagnóstico que ensinaram pelo caminho.
 
-A pasta [codigos/](codigos/) traz os sketches que usamos para depurar o sensor, e
-[referencia.md](referencia.md) reúne todas as referências e os códigos citados.
+A pasta [codigos/](codigos/) traz os sketches que usamos para depurar o sensor, e a
+pasta [firmware/](firmware/) guarda o programa que ficou rodando no ESP32 — a fase 4,
+que calibra sozinha, calcula o RMS do sinal e mostra a fadiga em tempo real no OLED
+embutido. Por fim, [referencia.md](referencia.md) reúne todas as referências e os
+códigos citados.
