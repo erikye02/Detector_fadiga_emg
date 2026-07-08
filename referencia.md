@@ -52,6 +52,12 @@
 - Real time detection of muscle fatigue using Arduino based surface EMG frequency
   and amplitude measurements. JSAR. https://jsar.fsha.org/index.php/jsar/article/view/68
 
+## Processamento do sinal (RMS e características)
+
+- Phinyomark, A., Phukpattaranont, P., & Limsakul, C. (2012). Feature reduction and
+  selection for EMG signal classification. Expert Systems with Applications, 39(8),
+  7420-7431. https://www.sciencedirect.com/science/article/abs/pii/S0957417412001200
+
 ## Tutoriais e referências práticas
 
 - Amplitude Analysis: Root-mean-square EMG Envelope — Delsys.

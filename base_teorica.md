@@ -60,13 +60,23 @@ O RMS mede a intensidade de um sinal que oscila. A média simples de algo que so
 desce fica perto de zero e não serve; o RMS resolve elevando cada valor ao
 quadrado, tirando a média e depois a raiz.
 
+A escolha não foi só prática. Na literatura de EMG o RMS é o estimador padrão de
+amplitude, e por dois motivos que se sustentam. Como ele corresponde à potência do
+sinal, carrega um significado físico claro — foi assim que De Luca justificou, para
+contrações voluntárias, que o valor RMS é o mais apropriado. E sob força constante,
+sem fadiga, quando o EMG se comporta como ruído gaussiano, o RMS é a estimativa de
+máxima verossimilhança da amplitude, não uma aproximação qualquer. Phinyomark e
+colegas ainda o situam entre as características de domínio do tempo, de baixo custo
+computacional e adequadas a processamento em tempo real, o que fecha bem com um
+microcontrolador como o ESP32-C3.
+
   - Subtraímos antes o centro do sinal, usando a média dinâmica da própria janela,
     não um valor fixo — o centro varia com a pessoa e a posição dos eletrodos
   - Janela de 256 amostras: tempo suficiente para um número estável, curta o
     bastante para não atrasar a resposta
   - 256 é potência de dois, o que ajudaria caso acrescentássemos uma FFT no futuro
 
-Fonte: Delsys, RMS EMG envelope (ver referencia.md).
+Fontes: De Luca (1997); Phinyomark et al. (2012); Delsys, RMS EMG envelope (ver referencia.md).
 
 
 POR QUE NÃO USAMOS A FREQUÊNCIA MEDIANA (MDF)
